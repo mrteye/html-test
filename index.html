@@ -1,21 +1,20 @@
 <html lang="en">
   <head>
-    <title>Chall-onge 10</title>
+    <title>Challenge 10</title>
     
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <link rel="stylesheet" href="index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/main.css" rel="stylesheet" />
   
     <!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
     <script async src="https://unpkg.com/es-module-shims@0.10.1/dist/es-module-shims.min.js"></script>
     <script type="importmap">
-    {
-      "imports": {
-        "vue": "https://unpkg.com/vue@3.2.31/dist/vue.esm-browser.js"
+      { "imports": {
+          "vue": "https://unpkg.com/vue@3.2.31/dist/vue.esm-browser.js"
+        }
       }
-    }
     </script>
   </head>
   
@@ -25,25 +24,31 @@
 
     createApp({
       setup() {
-        const text = ref('Edit me')
-        const recipes = ref(['a', 'b', 'c'])
+        const msgs = ref([{
+            title: 'Scoobie Doe',
+            html: '<h2>Hehehehhehe!</h2>',
+          }, {
+            title: 'anonymous',
+            html: '<span>Hello.</span>'
+          }, {
+            title: 'b',
+            html: 'basic hello'
+          }
+        ])
 
         return {
-          text,
-          recipes
+          msgs
         }
       }
     }).mount('#app')
     </script>
 
     <div id="app">
-      <h2>Text Input</h2>
-      <input v-model="text"></input> {{ text }}
-      
-      <h2>Recipes</h2>
+      <h2>Message Wall</h2>
       <ul>
-        <li v-for="(val, key) in recipes">
-          -- {{ Recipe }}
+        <li v-for="(val, key) in msgs">
+          <h3>{{ val.title }}</h3>
+          <div v-html="val.html"></div>
         </li>
       </ul>
     </div>
