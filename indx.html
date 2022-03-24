@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <title>Chall-onge 10</title>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="index.css" rel="stylesheet" />
+  
+    <!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
+    <script async src="https://unpkg.com/es-module-shims@0.10.1/dist/es-module-shims.min.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3.2.31/dist/vue.esm-browser.js"
+      }
+    }
+    </script>
+  </head>
+  
+  <body>
+    <script type="module">
+    import { createApp, ref } from 'vue'
+
+    createApp({
+      setup() {
+        const text = ref('Edit me')
+        const recipes = ref(['a', 'b', 'c'])
+
+        return {
+          text,
+          recipes
+        }
+      }
+    }).mount('#app')
+    </script>
+
+    <div id="app">
+      <h2>Text Input</h2>
+      <input v-model="text"></input> {{ text }}
+      
+      <h2>Recipes</h2>
+      <ul>
+        <li v-for="(val, key) in recipes">
+          -- {{ Recipe }}
+        </li>
+      </ul>
+    </div>
+  
+  </body>
+</html>
